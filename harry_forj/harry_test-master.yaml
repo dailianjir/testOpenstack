@@ -1,0 +1,16 @@
+blueprint:
+  name: harry_test
+  description: blueprint example
+  icon: 
+    file : redstone.png
+    content : (--- base64 encoded ---)
+  # by default, it should refer to our forj web documentation, to present the blueprint documentation. But we can propose to change it.
+  documentation : 'http://openstack.org/forj'
+  locations:
+    modules: 
+      - src-repo: bp-example
+        git: https://github.com/daihaojun/harry_test.git
+        install:
+          puppet-apply: install
+        uninstall:
+          puppet-apply: uninstall

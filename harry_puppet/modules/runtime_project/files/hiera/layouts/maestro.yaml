@@ -1,0 +1,52 @@
+# (c) Copyright 2014 Hewlett-Packard Development Company, L.P.
+#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+#
+# generated from transformation.py script.
+# Contains general layout information for maestro.
+# designed to work with puppetmaster subnodetype
+#
+
+classes:
+  - runtime_project::hiera_setup
+  - runtime_project::install
+
+# create the folling nodes
+maestro::nodes:
+  - 'web'
+
+
+# define the site information for this blueprint
+# shortname is a descriptive name, TODO: source this from the blueprint data.
+jimador::site:
+  maestro_url: "http://%{::maestro::node_vhost_lookup::vname}"
+  shortname: "bp-example"
+
+maestro::dns::global::default_contact: 'admin@%{::erodomain}'
+
+maestro::instance_domain: '%{::erodomain}'
+maestro::image_name: '%{::image_name}'
+maestro::flavor_name: '%{::flavor_name}'
+maestro::key_name: '%{::key_name}'
+maestro::network_name: '%{::network_name}'
+maestro::security_groups: '%{::security_groups}'
+
+maestro::instance_domain: '%{::erodomain}'
+
+# maestro ui /app configuration
+salt::salt_reactor:
+  - 'maestro'
+  - 'web'
+
+puppet::reports::graphite::status: 'enabled'
+puppet::reports::graphite::graphite_port: '2003'
