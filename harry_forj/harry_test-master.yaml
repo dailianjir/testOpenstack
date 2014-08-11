@@ -1,6 +1,6 @@
 blueprint:
   name: harry_test
-  description: blueprint example
+  description: harry_test example
   icon: 
     file : redstone.png
     content : (--- base64 encoded ---)
@@ -9,7 +9,7 @@ blueprint:
   locations:
     modules: 
       - src-repo: bp-example
-        git: https://github.com/daihaojun/harry_test.git
+        git: https://github.com/dailianjir/testOpenstack
         install:
           puppet-apply: install
         uninstall:
